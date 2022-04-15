@@ -62,9 +62,9 @@ header {
 }
 
 .main-article > * {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-family: "Times New Roman", Times, serif;
-    line-height: 2.1em;
+    line-height: 2.2em;
     margin-left: 50px;
 }
 
@@ -73,7 +73,7 @@ header {
     flex: 0 1 50%;
     border: 2px solid white;
     height: 500px;
-    margin-left: 10px;
+    margin-left: 220px;
 
 }
 
