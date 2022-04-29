@@ -1,0 +1,40 @@
+Browser:-
+
+Browser is the program that retrieves and displays web pages. And serach engine is the special kind of website that helps users to find web pages from other websites.
+
+When a user enters an URL in the browser, as we know Computer doesn't understand Human Language (www.pesto.com/), URLs can only be sent over the Internet using the ASCII character-set. 
+
+How the browser renders a web page? First, we need to understand what DOM is. When a browser sends a request to a server to fetch an HTML document, the server returns an HTML page in binary stream format which is basically a text file with the response header Content-Type set to the value text/html; charset=UTF-8.
+
+When the browser reads HTML code, whenever it encounters an HTML element like html, body, div etc., it creates a JavaScript object called a Node. Eventually, all HTML elements will be converted to JavaScript objects.
+
+After the browser has created Nodes from the HTML document, it has to create a tree-like structure of these node objects. Since our HTML elements in the HTML file are nested inside each other, the browser needs to replicate that but using Node objects it has previously created. This will help the browser efficiently render and manage the webpage throughout its lifecycle.
+
+JavaScript doesn’t understand what DOM is, it is not part of the JavaScript specifications. DOM is a high-level Web API provided by the browser to efficiently render a webpage and expose it publically for the developer to dynamically manipulate DOM elements for various purposes. At last DOM is the user interface bewteen HTML-CSS and JavaScript.
+
+Using DOM API, developers can add or remove HTML elements, change its appearance or bind event listeners. Using DOM API, HTML elements can be created or cloned in memory and maniuplated without affecting the rendered DOM tree. This gives developers the ability to construct highly dynamic web page with rich user experience.
+
+After constructing the DOM, the browser reads CSS from all the sources (external, embedded, inline) and construct a CSSOM. CSSOM stands for CSS Object Model which is a Tree Like structure just like DOM.
+
+Render-Tree is also a tree-like structure constructed by combining DOM and CSSOM trees together. The browser has to calculate the layout of each visible element and paint them on the screen, for that browser uses this Render-Tree. Hence, unless Render-Tree isn’t constructed, nothing is going to get printed on the screen which is why we need both DOM and CSSOM trees. The first browser creates the layout of each individual Render-Tree node. The layout consists of the size of each node will be printed on the screen. 
+
+Browser's Component:-
+
+1. User Interface: UI provides the methods with which a user inter-acts with a Browser Engine. This include the address bar, back/forward button, bookmarking menu, etc.
+
+2. Browser Engine: Marshals actions between UI and Rendering Engine. This provides a high level interface to Rendering Engine. The Browser Engine provides the method to initiate the loading of URL and other high level browsing actions (reload, back, forward). Browser Engine also provides the user interface with various messages relating to error messages and loading progress.  
+
+3. The Rendering Engine: Produces the visual representation of a given URL. The Rendering Engine inteprets the HTML, XML, and JavaScripts that comprises a given URL and generates the layout that is displayed in the User Interface. A key component of the Rendering Engine is the HTML parser, this HTML parser is quite complex because it allows the Rendering Engine to display poorly formed HTML pages. Chrome uses Webkit Rendering Engine (before is Blink).
+
+4. The Networking: Provides functionality to handle retrieve URls using common internet protocols of HTTP and FTP. The Networking components hanldes all aspects of Internet communication and secuirity, character set translations and MIME type resolution. The Networking component may implement a cache to retrived documents to minimize network traffic.
+
+5. JavaScript Interpreter: This component executes the javaScript code that is embedded in a website. Results of the execution a passed to Rendering Engine fo dispaly. The Rendering Engine may disable various actions based on user defined properties.
+
+6. The UI Backend: This component is used to drawing basic widgets like combo boxes and windows, underneath it uses operating system user interface methods.
+
+7. Data Storage: This components manages user data such as bookmarks, cookies, and prefrences. The new HTML specification (HTML5) defines "web data base" which is a complete databse in Browser.
+
+
+
+
+
