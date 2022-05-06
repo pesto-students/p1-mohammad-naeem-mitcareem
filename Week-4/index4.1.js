@@ -12,50 +12,55 @@
 
 
 
-const PolyfillPromiseState = {
-    PENDING: "PENDING",
-    RESOLVED: "RESOLVED",
-    REJECTED: "REJECTED"
-};
 
-class PolyfillPromise {
-    constructor(fn) {
-        this.PolyfillPromiseState = PolyfillPromiseState.PENDING;
-        this.resolver = this.resolver.bind(this);
-        this.rejector = this.rejector.bind(this);
-        this.thenFn = null;
-        this.catchFn = null;
-        fn(this.resolver, this.rejector);
-    }
-    resolver(resolveData) {
-        if (this.PolyfillPromiseState === PolyfillPromiseState.PENDING) {
-            this.thenFn && this.thenFn(resolveData);
+const randomNumber = () => Math.floor(Math.random() * 101);
+
+class CustomPromise {
+    constructor(handler) {
+        this.status = "pending";
+        this.value = null;
+
+        const resolve = (value) => {
+            if (this.status === 'pending') {
+                this.status = 'fulfilled';
+                this.value = value;
+            }
         }
-        this.PolyfillPromiseState = PolyfillPromiseState.RESOLVED;
+
+        const reject = (value) => {
+            if (this.status === "pending") {
+                this.status = "rejected";
+                this.value = value;
+            }
+        };
+
+        try {
+            handler(resolve, reject);
+        } catch (e) {
+            reject(e)
+        }
     }
 
-    rejector(rejectData) {
-        if (this.PolyfillPromiseState === PolyfillPromiseState.PENDING) {
-            this.catchFn && this.catchFn(rejectData)
+    then(onFulfilled) {
+        if (this.status === 'fulfilled') {
+            onFulfilled(this.value);
         }
-        this.PolyfillPromiseState = PolyfillPromiseState.REJECTED;
     }
+
+    catch(onRejected) {
+        if (this.status === 'rejected') {
+            onRejected(this.value);
+        }
+    }
+
 }
 
-const getNumber = () =>
-    new PolyfillPromise((res, rej) => {
-        const randomNumber = parseInt(Math.random() * 100, 10);
-        setTimeout(() => {
-            if (randomNumber % 5 === 0) {
-                rej(console.log(`Rejected with Number ${randomNumber}`))
-            }
-            else {
-                res(console.log(`Resolved with Number ${randomNumber}`))
-            }
-
-        },
-            randomNumber * 10)
-
-    });
-
-getNumber();
+const p1 = new CustomPromise((resolve, reject) => {
+    if ((randomNumber() % 5) !== 0) {
+        resolve('Promise Resolved')
+    } else {
+        reject('Promise Rejected')
+    }
+});
+p1.then((res) => console.log(res));
+p1.catch((res) => console.log(res));
