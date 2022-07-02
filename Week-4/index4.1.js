@@ -11,7 +11,7 @@
 //     .finally(() => console.log(`Promise Handled`));
 
 
-
+//custom promise///////////////
 
 const randomNumber = () => Math.floor(Math.random() * 101);
 

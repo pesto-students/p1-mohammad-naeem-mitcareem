@@ -1,0 +1,44 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  background-color: aliceblue;
+  /* align-items: center;
+    justify-items: center; */
+  /* margin: 50px 50px 50px 50px; */
+}
+input {
+  width: 500px;
+  height: 30px;
+  border-radius: 10px;
+  /* height: auto */
+  align-self: left;
+  border: 1px solid black;
+}
+button {
+  height: 30px;
+  width: auto;
+  align-self: right;
+}
+.clipboard {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  height: 300px;
+  position: relative;
+  text-align: left;
+  margin-left: 50px;
+}
+.header > p {
+  font-size: 20px;
+}
+.form {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
