@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: lightblue;
+}
+.main > span {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+}
+
+Link {
+  text-decoration: none;
+}
